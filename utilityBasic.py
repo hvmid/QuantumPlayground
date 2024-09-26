@@ -14,40 +14,50 @@ def generate_signal_basic(df):
     sell_signals = df['Close'] > df['Close'].shift(1)
     return buy_signals, sell_signals
 
+
 def backtest_basic(df, signals, initial_cash=100):
     cash = initial_cash  # Starting cash
-    stock = 0            # Starting with no stock
-    holdings_value = []   # Track portfolio value over time
+    stock = 0  # Starting with no stock
+    holdings_value = []  # Track portfolio value over time
     roi = []
-    day1 = 0
     buy_hold = []
-    
+
+    initial_price = df['Close'].iloc[0]
+    initial_shares = initial_cash / initial_price
+
     for i in range(len(signals)):
-        
         price = df['Close'].iloc[i]
         signal = signals[i]
 
-        if i==0:
-          day1 = cash / price
-
         if signal == 'Buy' and cash > 0:
             # Buy with all available cash
-            stock = cash / price
+            stock += cash / price
             cash = 0
-
         elif signal == 'Sell' and stock > 0:
             # Sell all stock and convert to cash
-            cash = stock * price
+            cash += stock * price
             stock = 0
 
         # Total value = cash + value of current stock holdings
-        buy_hold.append(price*day1)
         total_value = cash + stock * price
-        roi_percent = ((total_value-initial_cash)/initial_cash)*100
         holdings_value.append(total_value)
+
+        # Calculate ROI
+        roi_percent = ((total_value - initial_cash) / initial_cash) * 100
         roi.append(roi_percent)
+
+        # Calculate buy-and-hold value
+        buy_hold_value = initial_shares * price
+        buy_hold_roi = ((buy_hold_value - initial_cash) / initial_cash) * 100
+        buy_hold.append(buy_hold_roi)
+
     # Create a DataFrame to track portfolio value over time
-    result_df = pd.DataFrame({'Date': df['Datetime'], 'Portfolio Value': holdings_value, 'roi':roi, 'buy_hold':buy_hold})
+    result_df = pd.DataFrame({
+        'Date': df['Datetime'],
+        'Portfolio Value': holdings_value,
+        'roi': roi,
+        'buy_hold': buy_hold
+    })
     return result_df
 
 def qubo_basic(buy_signals, sell_signals, df):
