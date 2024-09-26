@@ -10,11 +10,7 @@ This project compares the performance of quantum-optimized, classically-optimize
 
 ## Installation
 
-1. Clone this repository:
-
-git clone https://github.com/yourusername/quantum-trading-comparison.git
-cd quantum-trading-comparison
-text
+1. Clone this repository
 
 2. Create a virtual environment (optional but recommended):
 
