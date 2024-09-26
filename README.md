@@ -107,7 +107,8 @@ The script generates comparison plots for each stock-interval-period combination
 
 Each plot shows the ROI over time for the Quantum, Classical, and Buy-and-Hold strategies.
 
-![comparison_SERV_1d_last_month.png](..%2F..%2FUsers%2Fhamid%2FDesktop%2Fcomparison_SERV_1d_last_month.png)
+![comparison_SERV_1d_last_month](https://github.com/user-attachments/assets/04e4ae9a-dbdb-4396-981e-dc01411c4eb8)
+
 ## Potential Errors
 
 1. **API Token Error**: If the D-Wave API token is not set or is invalid, you'll see an authentication error.
