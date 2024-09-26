@@ -107,8 +107,6 @@ The script generates comparison plots for each stock-interval-period combination
 
 Each plot shows the ROI over time for the Quantum, Classical, and Buy-and-Hold strategies.
 
-![comparison_SERV_1d_last_month](https://github.com/user-attachments/assets/04e4ae9a-dbdb-4396-981e-dc01411c4eb8)
-
 ## Potential Errors
 
 1. **API Token Error**: If the D-Wave API token is not set or is invalid, you'll see an authentication error.
@@ -125,11 +123,5 @@ The script will skip this combination and continue with the next.
 
 5. **Plot Directory Error**: If the script can't create or write to the specified plot directory, you'll see a permission error.
 
-## Troubleshooting
+## Ensure your D-Wave API token is correct and has the necessary permissions.
 
-- Ensure your D-Wave API token is correct and has the necessary permissions.
-- Check your internet connection if you're having trouble fetching stock data.
-- If you're getting quantum solver errors, try reducing the number of reads or the problem size.
-- For memory errors, try processing fewer stocks or shorter time periods at once.
-
-Project Link: [https://github.com/yourusername/quantum-trading-comparison](https://github.com/yourusername/quantum-trading-comparison)
