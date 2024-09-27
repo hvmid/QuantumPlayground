@@ -57,7 +57,7 @@ Arguments:
 Example:
 
 python compare.py --stocks "['AAPL', 'GOOGL', 'MSFT']" --intervals "['1d', '1wk']" --periods "['1y', '2y']" --plot_dir "./plots"
-text
+
 
 ## Output
 

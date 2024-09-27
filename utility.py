@@ -39,8 +39,8 @@ def fetch_data(ticker, period, interval):
         # Add the additional metrics as new columns to the historical DataFrame
         for column, value in extra_info.items():
             hist[column] = value
-
-        hist.drop(columns=['Stock Splits'], inplace=True)
+        if 'Stock Splits' in hist.columns.to_list():
+            hist.drop(columns=['Stock Splits'], inplace=True)
         return hist
 
     except Exception as e:
